@@ -1,44 +1,64 @@
 function getComputerChoice () {
     let guess = Math.random();
     if (guess <=0.33){
-        return "Rock";
+        return "ROCK";
     } else if (guess >0.33 && guess <=0.66) {
-        return "Paper";
+        return "PAPER";
     } else {
-        return "Scissors"
+        return "SCISSORS"
     }
 }
+
+const rockButton = document.querySelector("#rockButton");
+const paperButton = document.querySelector("#paperButton");
+const scissorsButton = document.querySelector("#scissorsButton");
+
+const computerSelection = getComputerChoice();
+
+rockButton.addEventListener("click", () => {
+        let playerSelection = "ROCK";
+        playRound("ROCK", computerSelection);
+})
+
+paperButton.addEventListener("click", () => {
+    playRound();
+    let playerSelection = "PAPER";
+})
+
+scissorsButton.addEventListener("click", () => {
+    playRound();
+    let playerSelection = "SCISSORS";
+})
 
 function playRound(playerSelection, computerSelection) {
     // Comvert both to upper case in order to be case insensitive
     let computerUpperCase = computerSelection.toUpperCase();
-    let playerUpperCase = playerSelection.toUpperCase();
 
-    if (playerUpperCase === "ROCK" && computerUpperCase === "SCISSORS") {
+    if (playerSelection === "ROCK" && computerUpperCase === "SCISSORS") {
         console.log("You win!" + " " + playerSelection + " " + "beats" + " " + computerSelection);
         return 0;
-    } else if (playerUpperCase === "ROCK" && computerUpperCase === "PAPER") {
+    } else if (playerSelection === "ROCK" && computerUpperCase === "PAPER") {
         console.log("You lose!" + " " + playerSelection + " " + "loses to" + " " + computerSelection);
         return 1;
-    } else if (playerUpperCase === "ROCK" && computerUpperCase === "ROCK") {
+    } else if (playerSelection === "ROCK" && computerUpperCase === "ROCK") {
         console.log("Draw!" + " " + playerSelection + " " + "matches" + " " + computerSelection);
         return 2;
-    } else if (playerUpperCase === "SCISSORS" && computerUpperCase === "SCISSORS") {
+    } else if (playerSelection === "SCISSORS" && computerUpperCase === "SCISSORS") {
         console.log("Draw!" + " " + playerSelection + " " + "matches" + " " + computerSelection);
         return 2;
-    } else if (playerUpperCase === "SCISSORS" && computerUpperCase === "PAPER") {
+    } else if (playerSelection === "SCISSORS" && computerUpperCase === "PAPER") {
         console.log("You win!" + " " + playerSelection + " " + "beats" + " " + computerSelection);
         return 0;
-    } else if (playerUpperCase === "SCISSORS" && computerUpperCase === "ROCK") {
+    } else if (playerSelection === "SCISSORS" && computerUpperCase === "ROCK") {
         console.log("You lose!" + " " + playerSelection + " " + "loses to" + " " + computerSelection);
         return 1;
-    } else if (playerUpperCase === "PAPER" && computerUpperCase === "SCISSORS") {
+    } else if (playerSelection === "PAPER" && computerUpperCase === "SCISSORS") {
         console.log("You lose!" + " " + playerSelection + " " + "loses to" + " " + computerSelection);
         return 1;
-    } else if (playerUpperCase === "PAPER" && computerUpperCase === "PAPER") {
+    } else if (playerSelection === "PAPER" && computerUpperCase === "PAPER") {
         console.log("Draw!" + " " + playerSelection + " " + "matches" + " " + computerSelection);
         return 2;
-    } else if (playerUpperCase === "PAPER" && computerUpperCase === "ROCK"){
+    } else if (playerSelection === "PAPER" && computerUpperCase === "ROCK"){
         console.log("You Win!" + " " + playerSelection + " " + "beats" + " " + computerSelection);
         return 0;
     } else {
@@ -51,7 +71,6 @@ function playGame () {
     let computerScore = 0;
 
     while (userScore <3 && computerScore <3) {
-        const playerSelection = prompt("Rock, Paper or Scissors?");
         const computerSelection = getComputerChoice();
 
         let winner = playRound(playerSelection,computerSelection);
@@ -73,5 +92,6 @@ function playGame () {
         alert("Draw!");
     }
 }
+
 
 playGame();

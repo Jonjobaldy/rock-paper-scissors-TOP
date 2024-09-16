@@ -13,34 +13,34 @@ function playRound(playerSelection) {
     let computerSelection = getComputerChoice();
 
     if (playerSelection === "ROCK" && computerSelection === "SCISSORS") {
-        console.log("You win!" + " " + playerSelection + " " + "beats" + " " + computerSelection);
+        resultsDiv.textContent = "You win!" + " " + playerSelection + " " + "beats" + " " + computerSelection;
         return 0;
     } else if (playerSelection === "ROCK" && computerSelection === "PAPER") {
-        console.log("You lose!" + " " + playerSelection + " " + "loses to" + " " + computerSelection);
+        resultsDiv.textContent = "You lose!" + " " + playerSelection + " " + "loses to" + " " + computerSelection;
         return 1;
     } else if (playerSelection === "ROCK" && computerSelection === "ROCK") {
-        console.log("Draw!" + " " + playerSelection + " " + "matches" + " " + computerSelection);
+        resultsDiv.textContent = "Draw!" + " " + playerSelection + " " + "matches" + " " + computerSelection;
         return 2;
     } else if (playerSelection === "SCISSORS" && computerSelection === "SCISSORS") {
-        console.log("Draw!" + " " + playerSelection + " " + "matches" + " " + computerSelection);
+        resultsDiv.textContent = "Draw!" + " " + playerSelection + " " + "matches" + " " + computerSelection;
         return 2;
     } else if (playerSelection === "SCISSORS" && computerSelection === "PAPER") {
-        console.log("You win!" + " " + playerSelection + " " + "beats" + " " + computerSelection);
+        resultsDiv.textContent = "You win!" + " " + playerSelection + " " + "beats" + " " + computerSelection;
         return 0;
     } else if (playerSelection === "SCISSORS" && computerSelection === "ROCK") {
-        console.log("You lose!" + " " + playerSelection + " " + "loses to" + " " + computerSelection);
+        resultsDiv.textContent = "You lose!" + " " + playerSelection + " " + "loses to" + " " + computerSelection;
         return 1;
     } else if (playerSelection === "PAPER" && computerSelection === "SCISSORS") {
-        console.log("You lose!" + " " + playerSelection + " " + "loses to" + " " + computerSelection);
+        resultsDiv.textContent = "You lose!" + " " + playerSelection + " " + "loses to" + " " + computerSelection;
         return 1;
     } else if (playerSelection === "PAPER" && computerSelection === "PAPER") {
-        console.log("Draw!" + " " + playerSelection + " " + "matches" + " " + computerSelection);
+        resultsDiv.textContent = "Draw!" + " " + playerSelection + " " + "matches" + " " + computerSelection;
         return 2;
     } else if (playerSelection === "PAPER" && computerSelection === "ROCK"){
-        console.log("You Win!" + " " + playerSelection + " " + "beats" + " " + computerSelection);
+        resultsDiv.textContent = "You Win!" + " " + playerSelection + " " + "beats" + " " + computerSelection;
         return 0;
     } else {
-        console.log("Error! Please Try again.");
+        resultsDiv.textContent = "Error! Please Try again.";
     }
 }
 
@@ -59,27 +59,26 @@ const resultsDiv = document.querySelector("div");
 let userScore = 0;
 let computerScore = 0;
 
-// while (userScore <3 && computerScore <3) {
-//         const computerSelection = getComputerChoice();
+while (userScore <3 && computerScore <3) {
 
-//         let winner = playRound(playerSelection,computerSelection);
-//         if (winner === 0) {
-//             userScore += 1;
-//         } else if (winner === 1) {
-//             computerScore += 1;
-//         } else {
-//             continue;
-//         }
-//         console.log(`Your score : ${userScore}, Computer Score: ${computerScore}`)
-//     }
+        let winner = playRound(playerSelection,computerSelection);
+        if (winner === 0) {
+            userScore += 1;
+        } else if (winner === 1) {
+            computerScore += 1;
+        } else {
+            continue;
+        }
+        console.log(`Your score : ${userScore}, Computer Score: ${computerScore}`)
+    }
     
-// if (userScore === 3) {
-//         alert("You Won!");
-//     } else if (computerScore === 3) {
-//         alert("You Lost!");
-//     } else {
-//         alert("Draw!");
-//     }
+if (userScore === 3) {
+        alert("You Won!");
+    } else if (computerScore === 3) {
+        alert("You Lost!");
+    } else {
+        alert("Draw!");
+    }
 
 
 
